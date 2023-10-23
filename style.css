@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#parameters {
+  margin-bottom: 20px;
+}
+
+#parameters h2 {
+  margin-bottom: 10px;
+}
+
+#blueprint {
+  text-align: center;
+}
+
+#genes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gene {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
