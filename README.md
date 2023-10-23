@@ -275,3 +275,75 @@ model.save("gene_expression_model")
 ```
 
 Please note that this is just a basic outline, and you may need to modify and customize it based on your specific dataset and requirements.
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+from sklearn.preprocessing import StandardScaler
+
+def preprocess_data(data):
+    # Perform any necessary preprocessing steps on the genetic data
+    # For example, you can normalize the data or handle missing values
+    
+    # Normalize the data
+    scaler = StandardScaler()
+    normalized_data = scaler.fit_transform(data)
+    
+    return normalized_data
+
+def perform_pca(data, n_components=2):
+    # Perform Principal Component Analysis (PCA) on the data
+    
+    # Create a PCA object with the desired number of components
+    pca = PCA(n_components=n_components)
+    
+    # Apply PCA on the data
+    pca_data = pca.fit_transform(data)
+    
+    return pca_data
+
+def perform_tsne(data, n_components=2, perplexity=30):
+    # Perform t-Distributed Stochastic Neighbor Embedding (t-SNE) on the data
+    
+    # Create a t-SNE object with the desired number of components and perplexity
+    tsne = TSNE(n_components=n_components, perplexity=perplexity)
+    
+    # Apply t-SNE on the data
+    tsne_data = tsne.fit_transform(data)
+    
+    return tsne_data
+
+def visualize_data(data, labels=None):
+    # Visualize the reduced data using scatter plots or heatmaps
+    
+    # Create a scatter plot of the reduced data
+    plt.scatter(data[:, 0], data[:, 1], c=labels)
+    plt.xlabel('Component 1')
+    plt.ylabel('Component 2')
+    plt.title('Dimensionality Reduction')
+    plt.colorbar()
+    plt.show()
+
+# Example usage
+genetic_data = np.array([[1.2, 3.4, 2.1, 4.5], [2.3, 4.5, 1.9, 3.2], [3.1, 2.5, 4.3, 1.8]])
+preprocessed_data = preprocess_data(genetic_data)
+
+# Perform PCA
+pca_data = perform_pca(preprocessed_data)
+visualize_data(pca_data)
+
+# Perform t-SNE
+tsne_data = perform_tsne(preprocessed_data)
+visualize_data(tsne_data)
+```
+
+This Python script utilizes the scikit-learn library to perform dimensionality reduction on genetic data. It includes functions to preprocess the data, apply dimensionality reduction techniques such as Principal Component Analysis (PCA) or t-SNE, and visualize the reduced data using scatter plots.
+
+To use the script, you need to provide a genetic dataset in the form of a NumPy array. The `preprocess_data` function can be used to perform any necessary preprocessing steps on the data, such as normalization. The `perform_pca` function applies PCA on the preprocessed data and returns the reduced data. The `perform_tsne` function applies t-SNE on the preprocessed data and returns the reduced data. The `visualize_data` function can be used to visualize the reduced data using scatter plots.
+
+You can customize the number of components for PCA or t-SNE by specifying the `n_components` parameter. For t-SNE, you can also adjust the `perplexity` parameter to control the balance between local and global structure in the visualization.
+
+Please note that this code is a general template and may need to be adapted to your specific genetic data and requirements.
