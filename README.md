@@ -383,3 +383,105 @@ To design and implement a genetic algorithm to optimize the genetic blueprints f
    - The genetic blueprints can be stored or further analyzed for future use.
 
 Please note that the code for implementing a genetic algorithm can be complex and depends on the specific programming language and libraries you are using. It is recommended to refer to relevant documentation and examples for the chosen language and framework to implement the algorithm effectively.
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans, AgglomerativeClustering
+from sklearn.preprocessing import StandardScaler
+
+def preprocess_data(data):
+    # Perform data preprocessing steps, such as removing missing values or scaling the data
+    scaler = StandardScaler()
+    scaled_data = scaler.fit_transform(data)
+    return scaled_data
+
+def perform_clustering(data, n_clusters, algorithm):
+    if algorithm == "kmeans":
+        clustering_model = KMeans(n_clusters=n_clusters)
+    elif algorithm == "hierarchical":
+        clustering_model = AgglomerativeClustering(n_clusters=n_clusters)
+    else:
+        raise ValueError("Invalid clustering algorithm specified.")
+    
+    labels = clustering_model.fit_predict(data)
+    return labels
+
+def visualize_clusters(data, labels):
+    # Visualize the clusters using scatter plots or heatmaps
+    plt.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis')
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.title('Cluster Visualization')
+    plt.show()
+
+# Example usage
+data = np.array([[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]])
+preprocessed_data = preprocess_data(data)
+labels = perform_clustering(preprocessed_data, n_clusters=2, algorithm="kmeans")
+visualize_clusters(preprocessed_data, labels)
+```
+
+This script uses the scikit-learn library to perform clustering analysis on genetic data. The `preprocess_data` function preprocesses the data by scaling it using the `StandardScaler` from scikit-learn. The `perform_clustering` function applies the specified clustering algorithm (either K-means or hierarchical) to the preprocessed data and returns the cluster labels. The `visualize_clusters` function visualizes the clusters using scatter plots.
+
+To use this script, you need to provide your own genetic data in the form of a numpy array. In the example usage, a simple 2-dimensional array is used for demonstration purposes. You can replace it with your own genetic data.
+
+To specify the number of clusters and the clustering algorithm, modify the arguments in the `perform_clustering` function call. Currently, it is set to perform K-means clustering with 2 clusters. You can change it to hierarchical clustering or modify the number of clusters as per your requirements.
+
+```python
+import matplotlib.pyplot as plt
+
+# Genetic diversity metrics
+diversity_metrics = {
+    'Sample 1': {
+        'Trait 1': 0.8,
+        'Trait 2': 0.6,
+        'Trait 3': 0.9,
+    },
+    'Sample 2': {
+        'Trait 1': 0.7,
+        'Trait 2': 0.5,
+        'Trait 3': 0.8,
+    },
+    'Sample 3': {
+        'Trait 1': 0.6,
+        'Trait 2': 0.4,
+        'Trait 3': 0.7,
+    }
+}
+
+# Bar plot
+samples = list(diversity_metrics.keys())
+traits = list(diversity_metrics[samples[0]].keys())
+num_traits = len(traits)
+
+plt.figure(figsize=(10, 6))
+
+for i, trait in enumerate(traits):
+    values = [diversity_metrics[sample][trait] for sample in samples]
+    x = [i + 1 + (j * 0.2) for j in range(len(samples))]
+    plt.bar(x, values, width=0.2, label=trait)
+
+plt.xlabel('Samples')
+plt.ylabel('Diversity Metric')
+plt.title('Genetic Diversity Metrics Across Different Samples')
+plt.xticks([i + (num_traits * 0.2) / 2 for i in range(1, len(samples) + 1)], samples)
+plt.legend()
+plt.show()
+
+# Scatter plot
+plt.figure(figsize=(10, 6))
+
+for i, trait in enumerate(traits):
+    values = [diversity_metrics[sample][trait] for sample in samples]
+    plt.scatter(samples, values, label=trait)
+
+plt.xlabel('Samples')
+plt.ylabel('Diversity Metric')
+plt.title('Genetic Diversity Metrics Across Different Samples')
+plt.legend()
+plt.show()
+```
+
+This code snippet demonstrates how to use the matplotlib library in a Jupyter Notebook to visualize the genetic diversity metrics calculated in task 2. It includes code for generating both bar plots and scatter plots to visualize the diversity metrics across different genetic samples. The `diversity_metrics` dictionary contains the calculated diversity metrics for each sample and trait. The bar plot shows the diversity metrics for each trait across different samples, while the scatter plot shows the diversity metrics for each sample and trait individually.
