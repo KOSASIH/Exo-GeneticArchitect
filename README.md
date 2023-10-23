@@ -1412,3 +1412,219 @@ You can run this code in a Jupyter Notebook to generate the visualizations of th
 ```
 
 This code provides a web-based visualization using D3.js to display the optimized genetic blueprints generated in task 6. The visualization includes interactive features such as tooltips that show the values of each gene when hovering over a genetic blueprint node. The genetic blueprints are represented as circles, and the links between them represent the connections between the blueprints. Users can explore the genetic blueprints in detail by interacting with the visualization.
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans, AgglomerativeClustering
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+def preprocess_data(data):
+    # Perform any necessary preprocessing steps, such as scaling or imputation
+    scaler = StandardScaler()
+    scaled_data = scaler.fit_transform(data)
+    return scaled_data
+
+def apply_kmeans(data, num_clusters):
+    # Apply K-means clustering algorithm
+    kmeans = KMeans(n_clusters=num_clusters)
+    kmeans.fit(data)
+    labels = kmeans.labels_
+    return labels
+
+def apply_hierarchical_clustering(data, num_clusters):
+    # Apply hierarchical clustering algorithm
+    hierarchical = AgglomerativeClustering(n_clusters=num_clusters)
+    labels = hierarchical.fit_predict(data)
+    return labels
+
+def visualize_clusters(data, labels):
+    # Perform dimensionality reduction using PCA
+    pca = PCA(n_components=2)
+    reduced_data = pca.fit_transform(data)
+
+    # Visualize clusters using scatter plot
+    plt.scatter(reduced_data[:, 0], reduced_data[:, 1], c=labels)
+    plt.xlabel('Principal Component 1')
+    plt.ylabel('Principal Component 2')
+    plt.title('Cluster Visualization')
+    plt.show()
+
+# Load genetic data from a CSV file
+data = pd.read_csv('genetic_data.csv')
+
+# Preprocess the data
+processed_data = preprocess_data(data)
+
+# Apply K-means clustering
+kmeans_labels = apply_kmeans(processed_data, num_clusters=3)
+
+# Apply hierarchical clustering
+hierarchical_labels = apply_hierarchical_clustering(processed_data, num_clusters=3)
+
+# Visualize clusters
+visualize_clusters(processed_data, kmeans_labels)
+visualize_clusters(processed_data, hierarchical_labels)
+```
+
+Make sure to replace `'genetic_data.csv'` with the actual filename or path to your genetic data file. This script uses the scikit-learn library to perform clustering analysis on the genetic data. It includes functions to preprocess the data, apply K-means or hierarchical clustering algorithms, and visualize the clusters using scatter plots. The result is the visualization of clusters using both K-means and hierarchical clustering algorithms.
+
+```python
+import matplotlib.pyplot as plt
+
+# Genetic diversity metrics calculated in task 2
+diversity_metrics = {
+    'Sample1': {
+        'Metric1': 0.85,
+        'Metric2': 0.92,
+        'Metric3': 0.78
+    },
+    'Sample2': {
+        'Metric1': 0.76,
+        'Metric2': 0.89,
+        'Metric3': 0.81
+    },
+    'Sample3': {
+        'Metric1': 0.92,
+        'Metric2': 0.81,
+        'Metric3': 0.87
+    }
+}
+
+# Bar plot to visualize diversity metrics across different genetic samples
+sample_names = list(diversity_metrics.keys())
+metrics = list(diversity_metrics[sample_names[0]].keys())
+
+for metric in metrics:
+    metric_values = [diversity_metrics[sample][metric] for sample in sample_names]
+    plt.figure(figsize=(8, 6))
+    plt.bar(sample_names, metric_values)
+    plt.xlabel('Genetic Samples')
+    plt.ylabel(metric)
+    plt.title(f'Diversity Metric: {metric}')
+    plt.show()
+
+# Scatter plot to visualize diversity metrics across different genetic samples
+for metric1 in metrics:
+    for metric2 in metrics:
+        if metric1 != metric2:
+            metric1_values = [diversity_metrics[sample][metric1] for sample in sample_names]
+            metric2_values = [diversity_metrics[sample][metric2] for sample in sample_names]
+            plt.figure(figsize=(8, 6))
+            plt.scatter(metric1_values, metric2_values)
+            plt.xlabel(metric1)
+            plt.ylabel(metric2)
+            plt.title(f'Diversity Metrics: {metric1} vs {metric2}')
+            plt.show()
+```
+
+This code will generate bar plots to visualize the diversity metrics across different genetic samples and scatter plots to visualize the relationships between different diversity metrics. You can customize the `diversity_metrics` dictionary to include your own data.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Genetic Blueprints Visualization</title>
+  <style>
+    /* Add CSS styles for the visualization */
+    #chart {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    // Define the genetic blueprints data
+    const geneticBlueprints = [
+      { gene1: 0.8, gene2: 0.5, gene3: 0.2 },
+      { gene1: 0.6, gene2: 0.3, gene3: 0.7 },
+      { gene1: 0.4, gene2: 0.9, gene3: 0.1 },
+      // Add more genetic blueprints as needed
+    ];
+
+    // Create a D3.js SVG container
+    const svg = d3.select("#chart")
+      .append("svg")
+      .attr("width", "100%")
+      .attr("height", "100%");
+
+    // Define the dimensions of the chart
+    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+    const width = svg.attr("width") - margin.left - margin.right;
+    const height = svg.attr("height") - margin.top - margin.bottom;
+
+    // Create a group element for the chart
+    const chart = svg.append("g")
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Define the scales for x and y axes
+    const xScale = d3.scaleLinear()
+      .domain([0, geneticBlueprints.length - 1])
+      .range([0, width]);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, 1])
+      .range([height, 0]);
+
+    // Create the line generator
+    const line = d3.line()
+      .x((d, i) => xScale(i))
+      .y((d) => yScale(d));
+
+    // Draw the genetic blueprints as lines
+    chart.selectAll(".blueprint")
+      .data(geneticBlueprints)
+      .enter()
+      .append("path")
+      .attr("class", "blueprint")
+      .attr("d", (d) => line(Object.values(d)))
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2);
+
+    // Add tooltips to display gene values on hover
+    chart.selectAll(".blueprint")
+      .on("mouseover", (event, d) => {
+        const tooltip = d3.select("#chart")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("position", "absolute")
+          .style("background-color", "white")
+          .style("padding", "5px")
+          .style("border", "1px solid #ccc")
+          .style("border-radius", "5px")
+          .style("pointer-events", "none")
+          .style("left", `${event.pageX}px`)
+          .style("top", `${event.pageY}px`);
+
+        Object.entries(d).forEach(([gene, value]) => {
+          tooltip.append("div")
+            .style("color", "steelblue")
+            .text(`${gene}: ${value}`);
+        });
+      })
+      .on("mouseout", () => {
+        d3.select(".tooltip").remove();
+      });
+
+    // Add zooming functionality to the chart
+    const zoom = d3.zoom()
+      .scaleExtent([1, 10])
+      .on("zoom", (event) => {
+        chart.attr("transform", event.transform);
+      });
+
+    svg.call(zoom);
+  </script>
+</body>
+</html>
+```
+
+This code snippet implements a web-based visualization using D3.js to display the optimized genetic blueprints generated in task 6. The visualization includes interactive features such as tooltips to display gene values on hover and zooming to allow users to explore the genetic blueprints in detail. The code is written in HTML, CSS, and JavaScript and can be easily hosted on a web server.
