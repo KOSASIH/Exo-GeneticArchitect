@@ -1628,3 +1628,33 @@ This code will generate bar plots to visualize the diversity metrics across diff
 ```
 
 This code snippet implements a web-based visualization using D3.js to display the optimized genetic blueprints generated in task 6. The visualization includes interactive features such as tooltips to display gene values on hover and zooming to allow users to explore the genetic blueprints in detail. The code is written in HTML, CSS, and JavaScript and can be easily hosted on a web server.
+
+```python
+import openai
+
+def generate_genetic_blueprint(num_genes, gene_functions, desired_traits):
+    prompt = f"Number of Genes: {num_genes}\nGene Functions: {gene_functions}\nDesired Traits: {desired_traits}"
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=200,
+        temperature=0.7,
+        n=1,
+        stop=None,
+        temperature=0.7
+    )
+    return response.choices[0].text.strip()
+
+# User input
+num_genes = 10
+gene_functions = ["function1", "function2", "function3"]
+desired_traits = ["trait1", "trait2", "trait3"]
+
+genetic_blueprint = generate_genetic_blueprint(num_genes, gene_functions, desired_traits)
+
+# Output as markdown code
+print(f"```\n{genetic_blueprint}\n```")
+```
+
+This Python script uses the OpenAI API to generate a text-based description of a genetic blueprint for life on a distant world. It takes user input for specific parameters such as the desired number of genes, gene functions, and desired traits. The output is formatted as markdown code to facilitate easy integration into future tasks.
+
