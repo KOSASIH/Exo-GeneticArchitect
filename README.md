@@ -8,6 +8,9 @@ Architecting the genetic blueprints of life on distant worlds through AI.
 - [Technologies](#technologies)
 - [Problems To Solve](#problems-to-solve)
 - [Contributor Guide](#contributor-guide) 
+- [Guide](#guide)
+- [Roadmap](#roadmap)
+- [Aknowledgement](aknowledgement.md)
 
 # Description 
 
