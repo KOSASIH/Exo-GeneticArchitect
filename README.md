@@ -4,11 +4,19 @@ Architecting the genetic blueprints of life on distant worlds through AI.
 # Contents 
 
 - [Description](#description)
-- 
+- [Vision And Mission](#vision-and-mission) 
 
 # Description 
 
 Exo-GeneticArchitect is a groundbreaking platform that pioneers the intersection of artificial intelligence and genetic engineering, aiming to design and shape the fundamental building blocks of life on extraterrestrial landscapes. This innovative tool empowers scientists to craft genetic blueprints, paving the way for the potential colonization and adaptation of life forms in distant worlds. Harnessing the capabilities of AI, Exo-GeneticArchitect represents a leap forward in our quest to understand and manipulate the genetic fabric of life beyond Earth.
+
+# Vision And Mission 
+
+**Vision:**
+To be at the forefront of interstellar exploration by seamlessly merging artificial intelligence with genetic architecture, unlocking the potential for sustainable and diverse life forms on distant celestial bodies.
+
+**Mission:**
+Exo-GeneticArchitect is dedicated to pioneering advancements in genetic engineering and AI integration, with the mission of enabling the creation and adaptation of life in extraterrestrial environments. We strive to push the boundaries of scientific discovery, fostering a future where humanity can coexist with, and contribute to, the biological diversity of the cosmos. Our commitment is to explore, innovate, and shape the genetic blueprints of life on a universal scale.
 
 # Guide 
 
