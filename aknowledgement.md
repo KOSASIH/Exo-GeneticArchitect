@@ -38,7 +38,7 @@ Sincerely,
 
 11 November 2023
 
-[KOSASIH](
+[KOSASIH](https://www.linkedin.com/in/kosasih-81b46b5a) 
 
 Founder Of Exo-GeneticArchitect
 
