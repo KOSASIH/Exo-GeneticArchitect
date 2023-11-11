@@ -5,7 +5,9 @@ Architecting the genetic blueprints of life on distant worlds through AI.
 
 - [Description](#description)
 - [Vision And Mission](#vision-and-mission)
-- [Technologies](#technologies) 
+- [Technologies](#technologies)
+- [Problems To Solve](#problems-to-solve)
+- [Contributor Guide](#contributor-guide) 
 
 # Description 
 
@@ -217,6 +219,107 @@ Exo-GeneticArchitect is dedicated to pioneering advancements in genetic engineer
 
 38. **Inclusive Access to Technology:**
     Promoting inclusive access to exo-genetic engineering technologies, addressing issues of accessibility and ensuring that advancements in the field benefit a broad range of researchers and institutions worldwide.
+
+# Contributor Guide 
+
+**Exo-GeneticArchitect GitHub Repository Contributor Guide**
+
+### Welcome Contributors!
+
+Thank you for your interest in contributing to Exo-GeneticArchitect. Your collaboration is essential in advancing the frontiers of exo-genetic engineering. Please follow this guide to ensure a smooth and productive contribution process.
+
+### Table of Contents
+
+1. [Getting Started](#getting-started)
+2. [Code Contribution Guidelines](#code-contribution-guidelines)
+    - [Branching Strategy](#branching-strategy)
+    - [Coding Standards](#coding-standards)
+    - [Commit Messages](#commit-messages)
+3. [Documentation](#documentation)
+4. [Issue Tracking](#issue-tracking)
+5. [Testing](#testing)
+6. [Code Review](#code-review)
+7. [Security](#security)
+8. [Community Guidelines](#community-guidelines)
+9. [License](#license)
+
+### 1. Getting Started
+
+- Fork the Exo-GeneticArchitect repository to your GitHub account.
+- Clone your forked repository locally:
+
+    ```bash
+    git clone https://github.com/KOSASIH/Exo-GeneticArchitect.git
+    ```
+
+- Set up the main repository as a remote:
+
+    ```bash
+    git remote add upstream https://github.com/Exo-GeneticArchitect/Exo-GeneticArchitect.git
+    ```
+
+- Install project dependencies as outlined in the project documentation.
+
+### 2. Code Contribution Guidelines
+
+#### Branching Strategy
+
+- Create a feature branch for your contribution:
+
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+
+- Ensure your branch is up-to-date with the upstream main branch before submitting a pull request:
+
+    ```bash
+    git pull upstream main
+    ```
+
+#### Coding Standards
+
+- Follow the coding standards outlined in the project documentation.
+- Ensure your code is well-documented and includes inline comments where necessary.
+
+#### Commit Messages
+
+- Write clear, concise, and descriptive commit messages.
+- Use present tense ("Add feature" not "Added feature") and imperative mood.
+
+### 3. Documentation
+
+- Keep documentation up-to-date with any code changes.
+- If you introduce new features, provide relevant additions to the documentation.
+
+### 4. Issue Tracking
+
+- Reference relevant issues in your commit messages (e.g., "Fixes #123").
+
+### 5. Testing
+
+- Ensure that your code passes existing tests.
+- Add new tests for new features or bug fixes.
+- Run tests locally before submitting a pull request.
+
+### 6. Code Review
+
+- Be open to feedback and constructive criticism during the code review process.
+- Respond promptly to comments and update your code accordingly.
+
+### 7. Security
+
+- If you discover a security vulnerability, please report it responsibly by contacting the maintainers directly.
+
+### 8. Community Guidelines
+
+- Be respectful and inclusive in all interactions within the community.
+- Follow the [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
+
+### 9. License
+
+- Ensure that your contributions comply with the project's [license](LICENSE).
+
+### Thank you for contributing to Exo-GeneticArchitect! Together, we're shaping the future of genetic engineering beyond our world!
 
 # Guide 
 
